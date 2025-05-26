@@ -1,0 +1,230 @@
+1. What is PySpark, and how does it work?
+
+PySpark is the Python API for Apache Spark, an open-source distributed computing system designed for big data processing and analytics. 
+PySpark allows you to write Spark applications using Python, making it easier for Python developers to work with large datasets across a cluster of machines.
+
+Apache Spark Core:
+
+Spark is written in Scala and runs on the Java Virtual Machine (JVM).
+
+PySpark acts as a bridge between Python code and the Spark engine.
+
+Python Driver Program:
+
+You write Python code using PySpark.
+
+This code creates a SparkContext or SparkSession to connect to a Spark cluster.
+
+Communication via Py4J:
+
+PySpark uses Py4J, a library that enables Python programs to dynamically access Java objects.
+
+Your Python code communicates with the JVM-based Spark engine under the hood.
+
+RDD and DataFrame APIs:
+
+You can work with RDDs (Resilient Distributed Datasets) for low-level operations or use DataFrames for higher-level SQL-like operations.
+
+DataFrames are more optimized and easier to use.
+
+Distributed Processing:
+
+Spark splits your data and code into tasks and distributes them across worker nodes in a cluster.
+
+Workers perform computations in parallel, boosting performance for large datasets.
+
+Lazy Evaluation:
+
+PySpark builds a DAG (Directed Acyclic Graph) of transformations and only executes them when an action (like .collect(), .show(), .write()) is called.
+
+✅ Key Features:
+Parallel computing: Handles massive data volumes.
+
+Scalability: Works on a local machine or a massive cluster.
+
+Built-in support for SQL, ML, Streaming, Graphs via libraries like:
+
+pyspark.sql
+
+pyspark.ml
+
+pyspark.streaming
+
+pyspark.graphframes
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Explain the architecture of PySpark.
+
+1. Driver Program (Python)
+Where your PySpark code runs.
+
+Contains the SparkSession or SparkContext.
+
+Converts operations into a DAG (Directed Acyclic Graph).
+
+Sends tasks to the cluster manager.
+
+2. PySpark API (Python Layer)
+Provides classes like DataFrame, RDD, SparkSession, etc.
+
+Uses Py4J to translate Python commands into JVM calls.
+
+3. Py4J Gateway
+A communication bridge between the Python process and the JVM process.
+
+Converts Python commands into Java bytecode calls and vice versa.
+
+4. Spark Driver (JVM)
+The actual master node.
+
+Handles:
+
+Task scheduling
+
+Job coordination
+
+Fault tolerance
+
+5. Cluster Manager
+Manages resources across the cluster.
+
+Allocates Executors to the Driver.
+
+Types:
+
+Standalone
+
+YARN
+
+Mesos
+
+Kubernetes
+
+6. Executors (on Worker Nodes)
+Run the tasks sent by the driver.
+
+Perform transformations and actions.
+
+Store data in memory or disk (for caching/persistence)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. What are the differences between RDD, DataFrame, and Dataset?
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. How does Spark handle fault tolerance?
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. What are the different types of transformations in PySpark?
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. What is the difference between narrow and wide transformations?
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Explain the significance of the DAG (Directed Acyclic Graph) in Spark.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. What is the role of the driver and executor in PySpark?
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9. How does PySpark handle schema inference?
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. What are the different types of joins in PySpark?
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Performance Optimization Questions
+11. How does `cache()` differ from `persist()` in PySpark?
+12. What is the significance of `broadcast` in Spark?
+13. How do you optimize Spark jobs for performance?
+14. What are the benefits of partitioning in PySpark?
+15. What is the difference between `repartition()` and `coalesce()`?
+16. How do you handle skewed data in PySpark?
+17. How does Spark execute operations in a lazy manner?
+18. What are the different storage levels in Spark?
+19. How do you optimize join operations in PySpark?
+20. What is Adaptive Query Execution (AQE) in Spark?
+
+PySpark Coding Questions
+21. Write a PySpark program to find the top 3 most occurring words in a given dataset.
+22. Given a DataFrame, write a PySpark code to remove duplicate records.
+23. How do you perform word count using PySpark?
+24. Write a PySpark job to group by a column and calculate the average value.
+25. How do you handle missing/null values in a PySpark DataFrame?
+26. Write a PySpark program to count distinct values in a column.
+27. Given a DataFrame, write a PySpark code to filter records where salary > 50,000.
+28. Write a PySpark job to read a JSON file and convert it into a DataFrame.
+29. Write a PySpark query to find the second highest salary from an employee table.
+30. Write a PySpark job to join two DataFrames and select specific columns.
+
+PySpark SQL Questions
+31. How do you create a temporary view in PySpark?
+32. What is the difference between `df.select()` and `df.withColumn()`?
+33. How do you write and execute SQL queries in PySpark?
+34. What is the difference between `explode()` and `posexplode()`?
+35. How do you convert a DataFrame into a SQL table?
+36. How do you use window functions in PySpark?
+37. How do you rank rows in PySpark using `RANK()` and `DENSE_RANK()`?
+38. Write a PySpark SQL query to get the cumulative sum of a column.
+39. What is the difference between `groupBy()` and `rollup()`?
+40. How do you perform pivot operations in PySpark?
+
+Streaming and Real-time Processing
+41. What is Spark Streaming, and how does it work?
+42. What is the difference between structured and unstructured streaming?
+43. How do you handle late-arriving data in Spark Streaming?
+44. What are watermarks in Spark Streaming?
+
+
+______________________________________________________________________________________________________________________________________________________________
+1. Explain the differences between RDDs, DataFrames, and Datasets in PySpark. When would you use each?
+
+2. How does PySpark handle lazy evaluation? Can you provide an example demonstrating this concept?
+
+3. Describe the role of the Catalyst optimizer in PySpark. How does it enhance query execution?
+
+4. What are the various types of joins supported in PySpark? How do they differ in terms of performance and use cases?
+
+5. How can you handle missing or null values in a PySpark DataFrame? What strategies are available?
+
+6. Explain the significance of partitioning in PySpark. How does it impact performance, and how do you implement it?
+
+7. What is the difference between the cache() and persist() methods in PySpark? When would you use each?
+
+8. How do you create and register a user-defined function (UDF) in PySpark? What are the performance considerations?
+
+9. Discuss the concept of shuffling in PySpark. How does it affect performance, and how can it be minimized?
+
+10. Describe a scenario where you had to optimize a PySpark job for performance. What steps did you take?
+
+11. How do you read data from and write data to various file formats (e.g., CSV, Parquet, JSON) in PySpark?
+
+12. Explain how you would perform aggregations in PySpark. What functions and methods are commonly used?
+
+13. What are broadcast variables in PySpark? How do they help in improving the performance of join operations?
+
+14. Describe the process of handling schema evolution in PySpark when dealing with changing data structures.
+
+15. Can you provide an example of a complex PySpark transformation pipeline you've implemented? What challenges did you face, and how did you overcome them?
+
+
+_________________________________________________________________________________________________________________________________________________________________
+
+1. Calculate the top 5 products with the highest sales in each region.
+2. Join two DataFrames based on a composite key and filter rows where the sales amount exceeds a threshold.
+3. Calculate the running total of sales for each customer, partitioned by customer ID and ordered by date.
+4. Handle missing values in a DataFrame and replace them with the mean or median of the respective column.
+5. Find the top 10 most frequently occurring words in a text dataset.
+6. Extract and transform nested JSON data into a structured DataFrame.
+7. Write a PySpark script to detect duplicate rows based on multiple columns.
+8. Implement a custom UDF to perform text sentiment analysis.
+9. Identify outliers in a dataset using standard deviation or IQR methods.
+10. Perform data partitioning and bucketing for optimized query performance.
+11. Use PySpark to merge multiple CSV files into a single DataFrame and remove duplicates.
+12. Implement a rolling average for time series data.
+13. Perform data skew handling and repartitioning for efficient joins.
+14. Convert a PySpark DataFrame to a Pandas DataFrame for advanced analytics.
+15. Write a PySpark script to stream data from Kafka and process it in real-time.
+
+_________________________________________________________________________________________________________________________________________________________________
+
+
+
